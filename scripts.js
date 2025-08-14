@@ -1,15 +1,209 @@
-// Advanced Photo Album Manager
-class PhotoAlbumManager {
+// Enhanced Image Gallery Application
+class ImageGallery {
     constructor() {
-        this.albums = new Map();
-        this.currentAlbum = null;
-        this.selectedPhotos = new Set();
-        this.currentPhotoIndex = 0;
-        this.viewMode = 'grid'; // grid or list
-        this.photosPerPage = 12;
+        this.images = {
+            2023: [
+                { 
+                    id: 1, 
+                    src: 'images/2023/1.jpeg', 
+                    name: 'Summer Sunset', 
+                    uploadDate: '2023-06-15',
+                    description: 'Beautiful sunset over the mountains during summer vacation.',
+                    album: 'default',
+                    size: 1024000 // bytes
+                },
+                { 
+                    id: 2, 
+                    src: 'images/2023/2.jpeg', 
+                    name: 'Mountain View', 
+                    uploadDate: '2023-07-20',
+                    description: 'Breathtaking mountain landscape with snow-capped peaks.',
+                    album: 'default',
+                    size: 2048000 
+                },
+                { 
+                    id: 3, 
+                    src: 'images/2023/3.jpeg', 
+                    name: 'Ocean Waves', 
+                    uploadDate: '2023-08-10',
+                    description: 'Powerful ocean waves crashing on the rocky shore.',
+                    album: 'default',
+                    size: 1536000 
+                },
+                { 
+                    id: 4, 
+                    src: 'images/2023/4.jpeg', 
+                    name: 'City Lights', 
+                    uploadDate: '2023-09-05',
+                    description: 'Dazzling city skyline illuminated at night.',
+                    album: 'default',
+                    size: 1792000 
+                },
+                { 
+                    id: 5, 
+                    src: 'images/2023/5.jpeg', 
+                    name: 'Forest Path', 
+                    uploadDate: '2023-10-12',
+                    description: 'Peaceful walking trail through dense autumn forest.',
+                    album: 'default',
+                    size: 1344000 
+                },
+                { 
+                    id: 6, 
+                    src: 'images/2023/6.jpeg', 
+                    name: 'Desert Dunes', 
+                    uploadDate: '2023-11-18',
+                    description: 'Golden sand dunes stretching endlessly into the horizon.',
+                    album: 'default',
+                    size: 1600000 
+                },
+                { 
+                    id: 7, 
+                    src: 'images/2023/7.jpeg', 
+                    name: 'Winter Snow', 
+                    uploadDate: '2023-12-25',
+                    description: 'Fresh snow covering the landscape on Christmas morning.',
+                    album: 'default',
+                    size: 1152000 
+                }
+            ],
+            2024: [
+                { 
+                    id: 8, 
+                    src: 'images/2024/8.jpeg', 
+                    name: 'Spring Flowers', 
+                    uploadDate: '2024-03-15',
+                    description: 'Colorful wildflowers blooming in the spring meadow.',
+                    album: 'default',
+                    size: 1280000 
+                },
+                { 
+                    id: 9, 
+                    src: 'images/2024/9.jpeg', 
+                    name: 'River Rapids', 
+                    uploadDate: '2024-04-20',
+                    description: 'Fast-flowing river rapids surrounded by lush greenery.',
+                    album: 'default',
+                    size: 1888000 
+                },
+                { 
+                    id: 10, 
+                    src: 'images/2024/10.jpeg', 
+                    name: 'Golden Hour', 
+                    uploadDate: '2024-05-10',
+                    description: 'Perfect golden hour lighting over rolling hills.',
+                    album: 'default',
+                    size: 1472000 
+                },
+                { 
+                    id: 11, 
+                    src: 'images/2024/11.jpeg', 
+                    name: 'Urban Architecture', 
+                    uploadDate: '2024-06-05',
+                    description: 'Modern architectural marvels in the city center.',
+                    album: 'default',
+                    size: 2100000 
+                },
+                { 
+                    id: 12, 
+                    src: 'images/2024/12.jpeg', 
+                    name: 'Wildlife Safari', 
+                    uploadDate: '2024-07-12',
+                    description: 'Amazing wildlife encounter during African safari adventure.',
+                    album: 'default',
+                    size: 1728000 
+                },
+                { 
+                    id: 13, 
+                    src: 'images/2024/13.jpeg', 
+                    name: 'Coastal Beauty', 
+                    uploadDate: '2024-08-18',
+                    description: 'Stunning coastal cliffs meeting the deep blue ocean.',
+                    album: 'default',
+                    size: 1664000 
+                },
+                { 
+                    id: 14, 
+                    src: 'images/2024/14.jpeg', 
+                    name: 'Autumn Colors', 
+                    uploadDate: '2024-09-25',
+                    description: 'Vibrant fall foliage creating a natural masterpiece.',
+                    album: 'default',
+                    size: 1408000 
+                },
+                { 
+                    id: 15, 
+                    src: 'images/2024/Mekatilili.jpg', 
+                    name: 'Mekatilili Portrait', 
+                    uploadDate: '2024-10-08',
+                    description: 'Historical portrait of the legendary Kenyan freedom fighter.',
+                    album: 'default',
+                    size: 956000 
+                },
+                { 
+                    id: 16, 
+                    src: 'images/2024/15.jpeg', 
+                    name: 'Starry Night', 
+                    uploadDate: '2024-11-12',
+                    description: 'Spectacular night sky filled with countless stars.',
+                    album: 'default',
+                    size: 1216000 
+                },
+                { 
+                    id: 17, 
+                    src: 'images/2024/16.jpeg', 
+                    name: 'Beach Paradise', 
+                    uploadDate: '2024-11-20',
+                    description: 'Tropical beach paradise with crystal clear waters.',
+                    album: 'default',
+                    size: 1792000 
+                },
+                { 
+                    id: 18, 
+                    src: 'images/2024/17.jpeg', 
+                    name: 'Mountain Peak', 
+                    uploadDate: '2024-12-05',
+                    description: 'Majestic mountain peak reaching towards the clouds.',
+                    album: 'default',
+                    size: 1536000 
+                },
+                { 
+                    id: 19, 
+                    src: 'images/2024/18.jpeg', 
+                    name: 'Winter Landscape', 
+                    uploadDate: '2024-12-18',
+                    description: 'Serene winter landscape blanketed in pristine snow.',
+                    album: 'default',
+                    size: 1344000 
+                }
+            ],
+            2025: [],
+            2026: []
+        };
+        
+        this.albums = {
+            'default': {
+                name: 'Default Album',
+                description: 'Default album for all images',
+                createdDate: '2024-01-01'
+            }
+        };
+        
+        this.currentYear = '2024';
+        this.currentAlbum = 'all';
+        this.currentImages = [];
+        this.filteredImages = [];
+        this.selectedImages = new Set();
+        this.currentImageIndex = 0;
+        this.viewMode = 'grid';
+        this.sortBy = 'date';
+        this.imagesPerPage = 12;
         this.currentPage = 1;
+        this.currentTheme = 'dark';
+        
+        this.countdownInterval = null;
         this.uploadedFiles = [];
-        this.filteredPhotos = [];
+        this.currentEditingImage = null;
         
         this.init();
     }
@@ -17,71 +211,79 @@ class PhotoAlbumManager {
     init() {
         this.loadFromStorage();
         this.bindEvents();
+        this.loadTheme();
+        this.loadImages(this.currentYear);
         this.updateStats();
-        this.updateAlbumSelect();
-        this.showWelcomeScreen();
+        this.updateAlbumSelectors();
     }
 
     // Storage Management
     loadFromStorage() {
-        const stored = localStorage.getItem('photoAlbums');
-        if (stored) {
-            try {
-                const data = JSON.parse(stored);
-                this.albums = new Map(Object.entries(data));
-            } catch (e) {
-                console.error('Error loading from storage:', e);
-                this.showToast('Error loading saved albums', 'error');
-            }
+        try {
+            const storedImages = JSON.parse(localStorage.getItem('galleryImages') || 'null');
+            const storedAlbums = JSON.parse(localStorage.getItem('galleryAlbums') || 'null');
+            const storedTheme = localStorage.getItem('galleryTheme') || 'dark';
+            
+            if (storedImages) this.images = storedImages;
+            if (storedAlbums) this.albums = storedAlbums;
+            this.currentTheme = storedTheme;
+        } catch (e) {
+            console.error('Error loading from storage:', e);
         }
     }
 
     saveToStorage() {
         try {
-            const data = Object.fromEntries(this.albums);
-            localStorage.setItem('photoAlbums', JSON.stringify(data));
-            this.showToast('Albums saved successfully', 'success');
+            localStorage.setItem('galleryImages', JSON.stringify(this.images));
+            localStorage.setItem('galleryAlbums', JSON.stringify(this.albums));
+            localStorage.setItem('galleryTheme', this.currentTheme);
         } catch (e) {
             console.error('Error saving to storage:', e);
-            this.showToast('Error saving albums. Storage may be full.', 'error');
+            this.showToast('Storage quota exceeded. Some data may not be saved.', 'warning');
         }
+    }
+
+    // Theme Management
+    loadTheme() {
+        document.body.setAttribute('data-theme', this.currentTheme);
+        const themeBtn = document.getElementById('themeToggleBtn');
+        themeBtn.innerHTML = this.currentTheme === 'dark' ? 
+            '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+
+    toggleTheme() {
+        this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+        this.loadTheme();
+        this.saveToStorage();
+        this.showToast(`Switched to ${this.currentTheme} mode`, 'success');
     }
 
     // Event Bindings
     bindEvents() {
-        // Create Album Modal
-        document.getElementById('createAlbumBtn').addEventListener('click', () => {
-            this.openCreateAlbumModal();
+        // Theme toggle
+        document.getElementById('themeToggleBtn').addEventListener('click', () => {
+            this.toggleTheme();
         });
 
-        document.getElementById('closeCreateAlbumModal').addEventListener('click', () => {
-            this.closeCreateAlbumModal();
-        });
-
-        document.getElementById('cancelCreateAlbum').addEventListener('click', () => {
-            this.closeCreateAlbumModal();
-        });
-
-        document.getElementById('createAlbumForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.createAlbum();
-        });
-
-        // Album cover preview
-        document.getElementById('albumCover').addEventListener('change', (e) => {
-            this.previewAlbumCover(e.target.files[0]);
-        });
-
-        // Album Selection
+        // Album selection
         document.getElementById('albumSelect').addEventListener('change', (e) => {
-            if (e.target.value) {
-                this.selectAlbum(e.target.value);
-            } else {
-                this.showWelcomeScreen();
-            }
+            this.currentAlbum = e.target.value;
+            this.loadImages(this.currentYear);
         });
 
-        // Upload Modal
+        // Year selection
+        document.getElementById('yearSelect').addEventListener('change', (e) => {
+            this.currentYear = e.target.value;
+            this.loadImages(this.currentYear);
+        });
+
+        // Sort selection
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            this.sortBy = e.target.value;
+            this.loadImages(this.currentYear);
+        });
+
+        // Upload functionality
         document.getElementById('uploadBtn').addEventListener('click', () => {
             this.openUploadModal();
         });
@@ -90,18 +292,50 @@ class PhotoAlbumManager {
             this.closeUploadModal();
         });
 
+        // Create Album
+        document.getElementById('createAlbumBtn').addEventListener('click', () => {
+            this.openCreateAlbumModal();
+        });
+
+        document.getElementById('closeCreateAlbumModal').addEventListener('click', () => {
+            this.closeCreateAlbumModal();
+        });
+
+        document.getElementById('confirmCreateAlbum').addEventListener('click', () => {
+            this.createAlbum();
+        });
+
+        document.getElementById('cancelCreateAlbum').addEventListener('click', () => {
+            this.closeCreateAlbumModal();
+        });
+
+        // Delete Album
+        document.getElementById('deleteAlbumBtn').addEventListener('click', () => {
+            this.deleteAlbum();
+        });
+
+        // Move Images
+        document.getElementById('moveSelectedBtn').addEventListener('click', () => {
+            this.openMoveImagesModal();
+        });
+
+        document.getElementById('closeMoveImagesModal').addEventListener('click', () => {
+            this.closeMoveImagesModal();
+        });
+
+        document.getElementById('confirmMoveImages').addEventListener('click', () => {
+            this.moveSelectedImages();
+        });
+
+        document.getElementById('cancelMoveImages').addEventListener('click', () => {
+            this.closeMoveImagesModal();
+        });
+
         // File input and drag & drop
         const fileInput = document.getElementById('fileInput');
         const uploadArea = document.getElementById('uploadArea');
 
-        uploadArea.addEventListener('click', () => {
-            if (this.currentAlbum) {
-                fileInput.click();
-            } else {
-                this.showToast('Please select an album first', 'warning');
-            }
-        });
-
+        uploadArea.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => this.handleFileSelect(e.target.files));
 
         // Drag and drop events
@@ -120,7 +354,7 @@ class PhotoAlbumManager {
 
         // Search functionality
         document.getElementById('searchInput').addEventListener('input', (e) => {
-            this.searchPhotos(e.target.value);
+            this.searchImages(e.target.value);
         });
 
         // Gallery actions
@@ -129,7 +363,7 @@ class PhotoAlbumManager {
         });
 
         document.getElementById('deleteSelectedBtn').addEventListener('click', () => {
-            this.deleteSelectedPhotos();
+            this.deleteSelectedImages();
         });
 
         // View mode toggle
@@ -137,90 +371,105 @@ class PhotoAlbumManager {
             this.toggleViewMode();
         });
 
-        // Album actions
-        document.getElementById('editAlbumBtn').addEventListener('click', () => {
-            this.editCurrentAlbum();
-        });
-
-        document.getElementById('deleteAlbumBtn').addEventListener('click', () => {
-            this.deleteCurrentAlbum();
-        });
-
-        // Photo modal events
+        // Modal events
         document.getElementById('closeModal').addEventListener('click', () => {
-            this.closePhotoModal();
+            this.closeImageModal();
         });
 
         document.getElementById('imageModal').addEventListener('click', (e) => {
             if (e.target.id === 'imageModal') {
-                this.closePhotoModal();
+                this.closeImageModal();
             }
         });
 
-        // Photo modal navigation
+        // Navigation
         document.getElementById('prevImage').addEventListener('click', () => {
-            this.navigatePhoto(-1);
+            this.navigateImage(-1);
         });
 
         document.getElementById('nextImage').addEventListener('click', () => {
-            this.navigatePhoto(1);
-        });
-
-        // Photo modal actions
-        document.getElementById('editPhotoBtn').addEventListener('click', () => {
-            this.openEditPhotoModal();
-        });
-
-        document.getElementById('downloadImage').addEventListener('click', () => {
-            this.downloadCurrentPhoto();
-        });
-
-        document.getElementById('deleteImage').addEventListener('click', () => {
-            this.deleteCurrentPhoto();
-        });
-
-        // Edit Photo Modal
-        document.getElementById('closeEditPhotoModal').addEventListener('click', () => {
-            this.closeEditPhotoModal();
-        });
-
-        document.getElementById('cancelEditPhoto').addEventListener('click', () => {
-            this.closeEditPhotoModal();
-        });
-
-        document.getElementById('editPhotoForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.savePhotoEdit();
+            this.navigateImage(1);
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('imageModal').style.display === 'block') {
-                switch(e.key) {
-                    case 'Escape':
-                        this.closePhotoModal();
-                        break;
-                    case 'ArrowLeft':
-                        this.navigatePhoto(-1);
-                        break;
-                    case 'ArrowRight':
-                        this.navigatePhoto(1);
-                        break;
-                }
+                if (e.key === 'Escape') this.closeImageModal();
+                if (e.key === 'ArrowLeft') this.navigateImage(-1);
+                if (e.key === 'ArrowRight') this.navigateImage(1);
             }
         });
 
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                if (e.target.id === 'createAlbumModal') this.closeCreateAlbumModal();
-                if (e.target.id === 'uploadModal') this.closeUploadModal();
-                if (e.target.id === 'editPhotoModal') this.closeEditPhotoModal();
-            }
+        // Image modal actions
+        document.getElementById('editImageBtn').addEventListener('click', () => {
+            this.openEditImageModal();
+        });
+
+        document.getElementById('downloadImage').addEventListener('click', () => {
+            this.downloadCurrentImage();
+        });
+
+        document.getElementById('deleteImage').addEventListener('click', () => {
+            this.deleteCurrentImage();
+        });
+
+        // Edit Image Modal
+        document.getElementById('closeEditImageModal').addEventListener('click', () => {
+            this.closeEditImageModal();
+        });
+
+        document.getElementById('confirmEditImage').addEventListener('click', () => {
+            this.saveImageEdits();
+        });
+
+        document.getElementById('cancelEditImage').addEventListener('click', () => {
+            this.closeEditImageModal();
         });
     }
 
     // Album Management
+    updateAlbumSelectors() {
+        const selectors = [
+            'albumSelect', 'uploadAlbum', 'targetAlbum', 'editImageAlbum'
+        ];
+
+        selectors.forEach(selectorId => {
+            const selector = document.getElementById(selectorId);
+            if (!selector) return;
+
+            // Save current value
+            const currentValue = selector.value;
+            
+            // Clear options (except for albumSelect which has "All Albums")
+            if (selectorId === 'albumSelect') {
+                selector.innerHTML = '<option value="all">All Albums</option>';
+            } else {
+                selector.innerHTML = '';
+            }
+
+            // Add album options
+            Object.keys(this.albums).forEach(albumId => {
+                const option = document.createElement('option');
+                option.value = albumId;
+                option.textContent = this.albums[albumId].name;
+                selector.appendChild(option);
+            });
+
+            // Restore value if it still exists
+            if (selector.querySelector(`option[value="${currentValue}"]`)) {
+                selector.value = currentValue;
+            }
+        });
+
+        // Show/hide delete album button
+        const deleteAlbumBtn = document.getElementById('deleteAlbumBtn');
+        if (this.currentAlbum !== 'all' && this.currentAlbum !== 'default') {
+            deleteAlbumBtn.style.display = 'inline-flex';
+        } else {
+            deleteAlbumBtn.style.display = 'none';
+        }
+    }
+
     openCreateAlbumModal() {
         document.getElementById('createAlbumModal').style.display = 'block';
         document.getElementById('albumName').focus();
@@ -228,166 +477,248 @@ class PhotoAlbumManager {
 
     closeCreateAlbumModal() {
         document.getElementById('createAlbumModal').style.display = 'none';
-        document.getElementById('createAlbumForm').reset();
-        document.getElementById('coverPreview').innerHTML = '';
-    }
-
-    previewAlbumCover(file) {
-        if (!file || !file.type.startsWith('image/')) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const preview = document.getElementById('coverPreview');
-            preview.innerHTML = `<img src="${e.target.result}" alt="Album Cover Preview">`;
-        };
-        reader.readAsDataURL(file);
+        document.getElementById('albumName').value = '';
+        document.getElementById('albumDescription').value = '';
     }
 
     createAlbum() {
-        const formData = new FormData(document.getElementById('createAlbumForm'));
-        const albumName = formData.get('albumName').trim();
-        const albumDescription = formData.get('albumDescription').trim();
-        const albumCategory = formData.get('albumCategory');
-        const coverFile = formData.get('albumCover');
+        const name = document.getElementById('albumName').value.trim();
+        const description = document.getElementById('albumDescription').value.trim();
 
-        if (!albumName) {
-            this.showToast('Album name is required', 'error');
+        if (!name) {
+            this.showToast('Please enter an album name', 'warning');
             return;
         }
 
-        if (this.albums.has(albumName)) {
+        // Check if album name already exists
+        const albumId = name.toLowerCase().replace(/\s+/g, '_');
+        if (this.albums[albumId]) {
             this.showToast('Album name already exists', 'error');
             return;
         }
 
-        // Create album object
-        const album = {
-            id: Date.now().toString(),
-            name: albumName,
-            description: albumDescription,
-            category: albumCategory,
-            cover: null,
-            photos: [],
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+        this.albums[albumId] = {
+            name: name,
+            description: description,
+            createdDate: new Date().toISOString().split('T')[0]
         };
 
-        // Handle cover image
-        if (coverFile && coverFile.size > 0) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                album.cover = e.target.result;
-                this.finalizeAlbumCreation(album);
-            };
-            reader.readAsDataURL(coverFile);
-        } else {
-            this.finalizeAlbumCreation(album);
-        }
-    }
-
-    finalizeAlbumCreation(album) {
-        this.albums.set(album.name, album);
         this.saveToStorage();
-        this.updateAlbumSelect();
+        this.updateAlbumSelectors();
         this.updateStats();
         this.closeCreateAlbumModal();
-        this.showToast(`Album "${album.name}" created successfully!`, 'success');
-        
-        // Auto-select the new album
-        document.getElementById('albumSelect').value = album.name;
-        this.selectAlbum(album.name);
+        this.showToast(`Album "${name}" created successfully!`, 'success');
     }
 
-    updateAlbumSelect() {
-        const select = document.getElementById('albumSelect');
-        const currentValue = select.value;
+    deleteAlbum() {
+        if (this.currentAlbum === 'all' || this.currentAlbum === 'default') {
+            return;
+        }
+
+        const albumName = this.albums[this.currentAlbum].name;
+        if (!confirm(`Are you sure you want to delete the album "${albumName}"? All images will be moved to the default album.`)) {
+            return;
+        }
+
+        // Move all images from this album to default
+        Object.keys(this.images).forEach(year => {
+            this.images[year].forEach(image => {
+                if (image.album === this.currentAlbum) {
+                    image.album = 'default';
+                }
+            });
+        });
+
+        delete this.albums[this.currentAlbum];
+        this.currentAlbum = 'all';
+        document.getElementById('albumSelect').value = 'all';
+
+        this.saveToStorage();
+        this.updateAlbumSelectors();
+        this.loadImages(this.currentYear);
+        this.showToast(`Album "${albumName}" deleted successfully!`, 'success');
+    }
+
+    // Move Images Modal
+    openMoveImagesModal() {
+        if (this.selectedImages.size === 0) {
+            this.showToast('Please select images to move', 'warning');
+            return;
+        }
+
+        document.getElementById('selectedImagesCount').textContent = this.selectedImages.size;
+        this.updateAlbumSelectors();
+        document.getElementById('moveImagesModal').style.display = 'block';
+    }
+
+    closeMoveImagesModal() {
+        document.getElementById('moveImagesModal').style.display = 'none';
+    }
+
+    moveSelectedImages() {
+        const targetAlbum = document.getElementById('targetAlbum').value;
+        let movedCount = 0;
+
+        Object.keys(this.images).forEach(year => {
+            this.images[year].forEach(image => {
+                if (this.selectedImages.has(image.id)) {
+                    image.album = targetAlbum;
+                    movedCount++;
+                }
+            });
+        });
+
+        this.selectedImages.clear();
+        this.saveToStorage();
+        this.loadImages(this.currentYear);
+        this.closeMoveImagesModal();
+        this.showToast(`${movedCount} images moved successfully!`, 'success');
+    }
+
+    // Image Loading and Display with Sorting
+    loadImages(year) {
+        this.showLoading(true);
+        this.currentYear = year;
         
-        select.innerHTML = '<option value="">Select an Album</option>';
+        setTimeout(() => {
+            let allImages = this.images[year] || [];
+            
+            // Filter by album if not "all"
+            if (this.currentAlbum !== 'all') {
+                allImages = allImages.filter(image => image.album === this.currentAlbum);
+            }
+
+            // Sort images
+            this.currentImages = this.sortImages([...allImages]);
+            this.filteredImages = [...this.currentImages];
+            this.selectedImages.clear();
+            
+            if (year === '2026') {
+                this.showCountdown();
+                this.displayComingSoon();
+            } else {
+                this.hideCountdown();
+                if (this.currentImages.length > 0) {
+                    this.displayGallery();
+                } else {
+                    this.displayComingSoon();
+                }
+            }
+            
+            this.updateStats();
+            this.updateGalleryTitle();
+            this.updateActionButtons();
+            this.showLoading(false);
+        }, 500);
+    }
+
+    sortImages(images) {
+        return images.sort((a, b) => {
+            switch (this.sortBy) {
+                case 'name':
+                    return a.name.localeCompare(b.name);
+                case 'size':
+                    return (b.size || 0) - (a.size || 0);
+                case 'date':
+                default:
+                    return new Date(b.uploadDate) - new Date(a.uploadDate);
+            }
+        });
+    }
+
+    displayGallery() {
+        const gallery = document.getElementById('gallery');
+        const startIndex = (this.currentPage - 1) * this.imagesPerPage;
+        const endIndex = startIndex + this.imagesPerPage;
+        const imagesToShow = this.filteredImages.slice(startIndex, endIndex);
         
-        this.albums.forEach((album, name) => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = name;
-            select.appendChild(option);
+        gallery.innerHTML = '';
+        
+        imagesToShow.forEach((image, index) => {
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            
+            imageContainer.innerHTML = `
+                <input type="checkbox" class="image-checkbox" data-id="${image.id}">
+                <img src="${image.src}" alt="${image.name}" loading="lazy">
+                <div class="image-overlay">
+                    <div class="image-actions">
+                        <button onclick="gallery.openImageModal(${startIndex + index})" title="View">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button onclick="gallery.downloadImage(${image.id})" title="Download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button onclick="gallery.deleteImage(${image.id})" title="Delete" style="color: #dc3545;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="image-info-overlay">
+                    <h4>${image.name}</h4>
+                    <p>Uploaded: ${this.formatDate(image.uploadDate)}</p>
+                    <p>Album: ${this.albums[image.album]?.name || 'Unknown'}</p>
+                    <p>Size: ${this.formatFileSize(image.size || 0)}</p>
+                    ${image.description ? `<p class="image-desc">${image.description.substring(0, 50)}${image.description.length > 50 ? '...' : ''}</p>` : ''}
+                </div>
+            `;
+            
+            // Add checkbox event listener
+            const checkbox = imageContainer.querySelector('.image-checkbox');
+            checkbox.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    this.selectedImages.add(image.id);
+                } else {
+                    this.selectedImages.delete(image.id);
+                }
+                this.updateActionButtons();
+            });
+            
+            gallery.appendChild(imageContainer);
         });
         
-        if (currentValue && this.albums.has(currentValue)) {
-            select.value = currentValue;
-        }
+        this.updatePagination();
     }
 
-    selectAlbum(albumName) {
-        const album = this.albums.get(albumName);
-        if (!album) return;
-
-        this.currentAlbum = album;
-        this.filteredPhotos = [...album.photos];
-        this.selectedPhotos.clear();
-        this.currentPage = 1;
+    displayComingSoon() {
+        const gallery = document.getElementById('gallery');
+        const isCurrentYear = this.currentYear === new Date().getFullYear().toString();
+        const message = this.currentYear === '2026' ? 
+            '🎉 Amazing content awaits in 2026!' : 
+            isCurrentYear ? '📸 Start uploading images for this year!' : '🎊 Content coming soon for this year!';
         
-        this.showAlbumOverview();
+        gallery.innerHTML = `
+            <div class="coming-soon">
+                <h2>Coming Soon!</h2>
+                <p>${message}</p>
+            </div>
+        `;
+        
+        this.updatePagination();
+    }
+
+    // Search and Filter
+    searchImages(query) {
+        if (!query.trim()) {
+            this.filteredImages = [...this.currentImages];
+        } else {
+            this.filteredImages = this.currentImages.filter(image => 
+                image.name.toLowerCase().includes(query.toLowerCase()) ||
+                (image.description && image.description.toLowerCase().includes(query.toLowerCase()))
+            );
+        }
+        
+        this.currentPage = 1;
         this.displayGallery();
         this.updateStats();
-        this.updateDeleteButton();
     }
 
-    showAlbumOverview() {
-        const overview = document.getElementById('albumOverview');
-        const album = this.currentAlbum;
-        
-        // Update album cover
-        const coverImg = document.getElementById('currentAlbumCover');
-        if (album.cover) {
-            coverImg.src = album.cover;
-            coverImg.style.display = 'block';
-        } else {
-            coverImg.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik02MCA0MEw4MCA3MEg0MFoiIGZpbGw9IiNjY2MiLz4KPGNpcmNsZSBjeD0iNDUiIGN5PSI0NSIgcj0iNSIgZmlsbD0iI2NjYyIvPgo8L3N2Zz4K';
-        }
-        
-        // Update album info
-        document.getElementById('currentAlbumName').textContent = album.name;
-        document.getElementById('currentAlbumDescription').textContent = album.description || 'No description';
-        document.getElementById('currentAlbumCategory').textContent = album.category;
-        document.getElementById('currentAlbumCount').textContent = `${album.photos.length} photo${album.photos.length !== 1 ? 's' : ''}`;
-        document.getElementById('currentAlbumDate').textContent = `Created ${this.formatDate(album.createdAt)}`;
-        
-        overview.style.display = 'block';
-    }
-
-    editCurrentAlbum() {
-        if (!this.currentAlbum) return;
-        // This would open an edit album modal - implementation similar to create album
-        this.showToast('Edit album functionality can be added here', 'info');
-    }
-
-    deleteCurrentAlbum() {
-        if (!this.currentAlbum) return;
-        
-        const albumName = this.currentAlbum.name;
-        if (!confirm(`Are you sure you want to delete the album "${albumName}" and all its photos?`)) {
-            return;
-        }
-        
-        this.albums.delete(albumName);
-        this.saveToStorage();
-        this.updateAlbumSelect();
-        this.updateStats();
-        this.showWelcomeScreen();
-        this.showToast(`Album "${albumName}" deleted successfully`, 'success');
-    }
-
-    // Photo Upload
+    // Upload Functionality
     openUploadModal() {
-        if (!this.currentAlbum) {
-            this.showToast('Please select an album first', 'warning');
-            return;
-        }
-        
-        const modal = document.getElementById('uploadModal');
-        const albumInfo = document.getElementById('uploadAlbumInfo');
-        albumInfo.innerHTML = `<p><strong>Adding photos to:</strong> ${this.currentAlbum.name}</p>`;
-        
-        modal.style.display = 'block';
+        document.getElementById('uploadModal').style.display = 'block';
+        document.getElementById('uploadYear').value = this.currentYear;
+        document.getElementById('uploadAlbum').value = this.currentAlbum !== 'all' ? this.currentAlbum : 'default';
+        this.updateAlbumSelectors();
     }
 
     closeUploadModal() {
@@ -408,19 +739,10 @@ class PhotoAlbumManager {
     handleDrop(e) {
         e.preventDefault();
         document.getElementById('uploadArea').classList.remove('dragover');
-        if (!this.currentAlbum) {
-            this.showToast('Please select an album first', 'warning');
-            return;
-        }
         this.handleFileSelect(e.dataTransfer.files);
     }
 
     handleFileSelect(files) {
-        if (!this.currentAlbum) {
-            this.showToast('Please select an album first', 'warning');
-            return;
-        }
-
         const validFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
         
         if (validFiles.length !== files.length) {
@@ -437,12 +759,9 @@ class PhotoAlbumManager {
             reader.onload = (e) => {
                 this.uploadedFiles.push({
                     file: file,
-                    src: e.target.result,
-                    title: file.name.split('.')[0],
-                    description: '',
-                    tags: '',
-                    date: new Date().toISOString().split('T')[0],
-                    location: ''
+                    dataUrl: e.target.result,
+                    name: file.name.split('.')[0],
+                    size: file.size
                 });
                 this.updateUploadPreview();
             };
@@ -459,26 +778,18 @@ class PhotoAlbumManager {
             previewItem.className = 'preview-item';
             
             previewItem.innerHTML = `
-                <img src="${fileData.src}" alt="${fileData.title}">
-                <div class="preview-item-info">
-                    <input type="text" placeholder="Photo title" value="${fileData.title}" 
-                           onchange="photoAlbumManager.updateUploadFileData(${index}, 'title', this.value)">
-                    <textarea placeholder="Description" rows="2"
-                             onchange="photoAlbumManager.updateUploadFileData(${index}, 'description', this.value)">${fileData.description}</textarea>
+                <img src="${fileData.dataUrl}" alt="${fileData.name}">
+                <div class="preview-info">
+                    <p>${fileData.name}</p>
+                    <small>${this.formatFileSize(fileData.size)}</small>
                 </div>
-                <button class="preview-remove" onclick="photoAlbumManager.removeUploadFile(${index})">
+                <button class="preview-remove" onclick="gallery.removeUploadFile(${index})">
                     <i class="fas fa-times"></i>
                 </button>
             `;
             
             preview.appendChild(previewItem);
         });
-    }
-
-    updateUploadFileData(index, field, value) {
-        if (this.uploadedFiles[index]) {
-            this.uploadedFiles[index][field] = value;
-        }
     }
 
     removeUploadFile(index) {
@@ -490,6 +801,7 @@ class PhotoAlbumManager {
         this.uploadedFiles = [];
         this.updateUploadPreview();
         document.getElementById('fileInput').value = '';
+        document.getElementById('imageDescription').value = '';
     }
 
     confirmUpload() {
@@ -498,351 +810,221 @@ class PhotoAlbumManager {
             return;
         }
 
-        if (!this.currentAlbum) {
-            this.showToast('No album selected', 'error');
-            return;
-        }
-
         this.showLoading(true);
+        const uploadYear = document.getElementById('uploadYear').value;
+        const uploadAlbum = document.getElementById('uploadAlbum').value;
+        const description = document.getElementById('imageDescription').value.trim();
+        const currentDateTime = new Date().toISOString();
         
         setTimeout(() => {
             this.uploadedFiles.forEach((fileData) => {
-                const photo = {
-                    id: Date.now().toString() + Math.random().toString(36),
-                    src: fileData.src,
-                    title: fileData.title || 'Untitled Photo',
-                    description: fileData.description || '',
-                    tags: fileData.tags ? fileData.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [],
-                    date: fileData.date || new Date().toISOString().split('T')[0],
-                    location: fileData.location || '',
-                    uploadedAt: new Date().toISOString()
+                const newImage = {
+                    id: Date.now() + Math.random(),
+                    src: fileData.dataUrl,
+                    name: fileData.name,
+                    uploadDate: currentDateTime.split('T')[0],
+                    uploadTime: currentDateTime,
+                    description: description,
+                    album: uploadAlbum,
+                    size: fileData.size
                 };
                 
-                this.currentAlbum.photos.push(photo);
+                if (!this.images[uploadYear]) {
+                    this.images[uploadYear] = [];
+                }
+                
+                this.images[uploadYear].push(newImage);
             });
             
-            this.currentAlbum.updatedAt = new Date().toISOString();
             this.saveToStorage();
-            this.filteredPhotos = [...this.currentAlbum.photos];
-            this.displayGallery();
-            this.updateStats();
-            this.showAlbumOverview();
+            this.showToast(`${this.uploadedFiles.length} images uploaded successfully!`, 'success');
+            
             this.closeUploadModal();
-            this.showToast(`${this.uploadedFiles.length} photo${this.uploadedFiles.length !== 1 ? 's' : ''} uploaded successfully!`, 'success');
+            
+            if (uploadYear === this.currentYear) {
+                this.loadImages(this.currentYear);
+            }
+            
             this.showLoading(false);
         }, 1000);
     }
 
-    // Gallery Display
-    showWelcomeScreen() {
-        this.currentAlbum = null;
-        document.getElementById('albumOverview').style.display = 'none';
-        document.getElementById('galleryTitle').textContent = 'Select an Album';
+    // Image Modal
+    openImageModal(index) {
+        this.currentImageIndex = index;
+        const image = this.filteredImages[index];
         
-        const gallery = document.getElementById('gallery');
-        gallery.innerHTML = `
-            <div class="welcome-screen">
-                <i class="fas fa-photo-video welcome-icon"></i>
-                <h2>Welcome to Your Photo Albums</h2>
-                <p>Create your first album to start organizing your memories</p>
-                <button class="btn btn-primary" onclick="photoAlbumManager.openCreateAlbumModal()">
-                    <i class="fas fa-plus"></i> Create Your First Album
-                </button>
-            </div>
-        `;
-        
-        document.getElementById('pagination').innerHTML = '';
-        this.updateStats();
-    }
-
-    displayGallery() {
-        if (!this.currentAlbum) {
-            this.showWelcomeScreen();
-            return;
-        }
-
-        const gallery = document.getElementById('gallery');
-        const startIndex = (this.currentPage - 1) * this.photosPerPage;
-        const endIndex = startIndex + this.photosPerPage;
-        const photosToShow = this.filteredPhotos.slice(startIndex, endIndex);
-        
-        document.getElementById('galleryTitle').textContent = this.currentAlbum.name;
-        
-        if (photosToShow.length === 0) {
-            gallery.innerHTML = `
-                <div class="welcome-screen">
-                    <i class="fas fa-images welcome-icon"></i>
-                    <h2>No photos in this album</h2>
-                    <p>Start adding photos to bring this album to life!</p>
-                    <button class="btn btn-primary" onclick="photoAlbumManager.openUploadModal()">
-                        <i class="fas fa-plus"></i> Add Photos
-                    </button>
-                </div>
-            `;
-            document.getElementById('pagination').innerHTML = '';
-            return;
-        }
-
-        gallery.innerHTML = '';
-        
-        photosToShow.forEach((photo, index) => {
-            const photoContainer = document.createElement('div');
-            photoContainer.className = 'photo-container';
-            
-            photoContainer.innerHTML = `
-                <input type="checkbox" class="photo-checkbox" data-id="${photo.id}">
-                <img src="${photo.src}" alt="${photo.title}" loading="lazy" 
-                     onclick="photoAlbumManager.openPhotoModal(${startIndex + index})">
-                <div class="photo-overlay">
-                    <div class="photo-info">
-                        <h4>${photo.title}</h4>
-                        <p>${photo.description || 'No description'}</p>
-                        ${photo.tags.length > 0 ? `
-                            <div class="photo-tags">
-                                ${photo.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                            </div>
-                        ` : ''}
-                    </div>
-                    <div class="photo-actions">
-                        <button onclick="event.stopPropagation(); photoAlbumManager.openPhotoModal(${startIndex + index})" title="View">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button onclick="event.stopPropagation(); photoAlbumManager.downloadPhoto('${photo.id}')" title="Download">
-                            <i class="fas fa-download"></i>
-                        </button>
-                        <button onclick="event.stopPropagation(); photoAlbumManager.deletePhoto('${photo.id}')" title="Delete" style="color: #dc3545;">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // Add checkbox event listener
-            const checkbox = photoContainer.querySelector('.photo-checkbox');
-            checkbox.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    this.selectedPhotos.add(photo.id);
-                } else {
-                    this.selectedPhotos.delete(photo.id);
-                }
-                this.updateDeleteButton();
-            });
-            
-            gallery.appendChild(photoContainer);
-        });
-        
-        this.updatePagination();
-    }
-
-    // Photo Modal
-    openPhotoModal(index) {
-        this.currentPhotoIndex = index;
-        const photo = this.filteredPhotos[index];
-        
-        if (!photo) return;
+        if (!image) return;
         
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
-        const imageTitle = document.getElementById('modalImageTitle');
-        const imageDescription = document.getElementById('modalImageDescription');
-        const imageDate = document.getElementById('modalImageDate');
-        const imageLocation = document.getElementById('modalImageLocation');
-        const imageTags = document.getElementById('modalImageTags');
+        const imageName = document.getElementById('imageName');
+        const imageDetails = document.getElementById('imageDetails');
+        const imageDescription = document.getElementById('imageDescription');
+        const imageAlbum = document.getElementById('imageAlbum');
+        const imageUploadDate = document.getElementById('imageUploadDate');
+        const imageSize = document.getElementById('imageSize');
         
-        modalImage.src = photo.src;
-        imageTitle.textContent = photo.title;
-        imageDescription.textContent = photo.description || 'No description available';
-        imageDate.textContent = this.formatDate(photo.date) || 'No date';
-        imageLocation.textContent = photo.location || 'No location';
-        
-        // Update tags
-        imageTags.innerHTML = '';
-        if (photo.tags && photo.tags.length > 0) {
-            photo.tags.forEach(tag => {
-                const tagElement = document.createElement('span');
-                tagElement.className = 'tag';
-                tagElement.textContent = tag;
-                imageTags.appendChild(tagElement);
-            });
-        } else {
-            imageTags.innerHTML = '<span style="color: #999; font-style: italic;">No tags</span>';
-        }
+        modalImage.src = image.src;
+        imageName.textContent = image.name;
+        imageDetails.textContent = `Uploaded: ${this.formatDate(image.uploadDate)}`;
+        imageDescription.textContent = image.description || 'No description';
+        imageAlbum.textContent = this.albums[image.album]?.name || 'Unknown';
+        imageUploadDate.textContent = this.formatDate(image.uploadDate);
+        imageSize.textContent = this.formatFileSize(image.size || 0);
         
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
-    closePhotoModal() {
+    closeImageModal() {
         document.getElementById('imageModal').style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
-    navigatePhoto(direction) {
-        this.currentPhotoIndex += direction;
+    navigateImage(direction) {
+        this.currentImageIndex += direction;
         
-        if (this.currentPhotoIndex < 0) {
-            this.currentPhotoIndex = this.filteredPhotos.length - 1;
-        } else if (this.currentPhotoIndex >= this.filteredPhotos.length) {
-            this.currentPhotoIndex = 0;
+        if (this.currentImageIndex < 0) {
+            this.currentImageIndex = this.filteredImages.length - 1;
+        } else if (this.currentImageIndex >= this.filteredImages.length) {
+            this.currentImageIndex = 0;
         }
         
-        this.openPhotoModal(this.currentPhotoIndex);
+        this.openImageModal(this.currentImageIndex);
     }
 
-    downloadCurrentPhoto() {
-        const photo = this.filteredPhotos[this.currentPhotoIndex];
-        if (photo) {
-            this.downloadPhoto(photo.id);
-        }
-    }
-
-    deleteCurrentPhoto() {
-        const photo = this.filteredPhotos[this.currentPhotoIndex];
-        if (photo && confirm(`Delete "${photo.title}"?`)) {
-            this.deletePhoto(photo.id);
-            this.closePhotoModal();
+    downloadCurrentImage() {
+        const image = this.filteredImages[this.currentImageIndex];
+        if (image) {
+            this.downloadImage(image.id);
         }
     }
 
-    // Edit Photo Modal
-    openEditPhotoModal() {
-        const photo = this.filteredPhotos[this.currentPhotoIndex];
-        if (!photo) return;
-        
-        // Populate form
-        document.getElementById('editPhotoPreview').src = photo.src;
-        document.getElementById('photoTitle').value = photo.title;
-        document.getElementById('photoDescription').value = photo.description || '';
-        document.getElementById('photoTags').value = photo.tags ? photo.tags.join(', ') : '';
-        document.getElementById('photoDate').value = photo.date || '';
-        document.getElementById('photoLocation').value = photo.location || '';
-        
-        document.getElementById('editPhotoModal').style.display = 'block';
+    deleteCurrentImage() {
+        const image = this.filteredImages[this.currentImageIndex];
+        if (image && confirm(`Delete "${image.name}"?`)) {
+            this.deleteImage(image.id);
+            this.closeImageModal();
+        }
     }
 
-    closeEditPhotoModal() {
-        document.getElementById('editPhotoModal').style.display = 'none';
+    // Edit Image Modal
+    openEditImageModal() {
+        const image = this.filteredImages[this.currentImageIndex];
+        if (!image) return;
+
+        this.currentEditingImage = image;
+        
+        document.getElementById('editImageName').value = image.name;
+        document.getElementById('editImageDescription').value = image.description || '';
+        document.getElementById('editImageAlbum').value = image.album;
+        
+        this.updateAlbumSelectors();
+        document.getElementById('editImageModal').style.display = 'block';
     }
 
-    savePhotoEdit() {
-        const photo = this.filteredPhotos[this.currentPhotoIndex];
-        if (!photo) return;
-        
-        const form = document.getElementById('editPhotoForm');
-        const formData = new FormData(form);
-        
-        // Update photo data
-        photo.title = formData.get('photoTitle').trim() || 'Untitled Photo';
-        photo.description = formData.get('photoDescription').trim();
-        photo.tags = formData.get('photoTags').split(',').map(tag => tag.trim()).filter(tag => tag);
-        photo.date = formData.get('photoDate');
-        photo.location = formData.get('photoLocation').trim();
-        
+    closeEditImageModal() {
+        document.getElementById('editImageModal').style.display = 'none';
+        this.currentEditingImage = null;
+    }
+
+    saveImageEdits() {
+        if (!this.currentEditingImage) return;
+
+        const newName = document.getElementById('editImageName').value.trim();
+        const newDescription = document.getElementById('editImageDescription').value.trim();
+        const newAlbum = document.getElementById('editImageAlbum').value;
+
+        if (!newName) {
+            this.showToast('Please enter an image name', 'warning');
+            return;
+        }
+
+        // Find and update the image
+        Object.keys(this.images).forEach(year => {
+            this.images[year].forEach(image => {
+                if (image.id === this.currentEditingImage.id) {
+                    image.name = newName;
+                    image.description = newDescription;
+                    image.album = newAlbum;
+                }
+            });
+        });
+
         this.saveToStorage();
-        this.displayGallery();
-        this.openPhotoModal(this.currentPhotoIndex); // Refresh modal
-        this.closeEditPhotoModal();
-        this.showToast('Photo updated successfully!', 'success');
+        this.loadImages(this.currentYear);
+        this.closeEditImageModal();
+        this.closeImageModal();
+        this.showToast('Image updated successfully!', 'success');
     }
 
-    // Photo Actions
-    downloadPhoto(photoId) {
-        const photo = this.currentAlbum.photos.find(p => p.id === photoId);
-        if (!photo) return;
+    // Image Actions
+    downloadImage(imageId) {
+        const image = this.currentImages.find(img => img.id === imageId);
+        if (!image) return;
         
         const link = document.createElement('a');
-        link.href = photo.src;
-        link.download = `${photo.title || 'photo'}.jpg`;
+        link.href = image.src;
+        link.download = image.name || 'image';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        this.showToast('Photo downloaded successfully!', 'success');
+        this.showToast('Image downloaded successfully!', 'success');
     }
 
-    deletePhoto(photoId) {
-        if (!confirm('Are you sure you want to delete this photo?')) return;
+    deleteImage(imageId) {
+        if (!confirm('Are you sure you want to delete this image?')) return;
         
-        this.currentAlbum.photos = this.currentAlbum.photos.filter(p => p.id !== photoId);
-        this.currentAlbum.updatedAt = new Date().toISOString();
-        this.filteredPhotos = this.filteredPhotos.filter(p => p.id !== photoId);
-        this.selectedPhotos.delete(photoId);
-        
+        this.images[this.currentYear] = this.images[this.currentYear].filter(img => img.id !== imageId);
         this.saveToStorage();
-        this.displayGallery();
-        this.showAlbumOverview();
-        this.updateStats();
-        this.updateDeleteButton();
-        this.showToast('Photo deleted successfully!', 'success');
-    }
-
-    // Search and Filter
-    searchPhotos(query) {
-        if (!this.currentAlbum) return;
-        
-        if (!query.trim()) {
-            this.filteredPhotos = [...this.currentAlbum.photos];
-        } else {
-            const searchTerm = query.toLowerCase();
-            this.filteredPhotos = this.currentAlbum.photos.filter(photo => 
-                photo.title.toLowerCase().includes(searchTerm) ||
-                photo.description.toLowerCase().includes(searchTerm) ||
-                photo.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
-                photo.location.toLowerCase().includes(searchTerm)
-            );
-        }
-        
-        this.currentPage = 1;
-        this.displayGallery();
-        this.updateStats();
+        this.loadImages(this.currentYear);
+        this.showToast('Image deleted successfully!', 'success');
     }
 
     // Bulk Actions
     toggleSelectAll() {
-        if (!this.currentAlbum) return;
-        
-        const checkboxes = document.querySelectorAll('.photo-checkbox');
-        const allSelected = this.selectedPhotos.size === this.filteredPhotos.length;
+        const checkboxes = document.querySelectorAll('.image-checkbox');
+        const allSelected = this.selectedImages.size === this.filteredImages.length;
         
         if (allSelected) {
-            this.selectedPhotos.clear();
+            this.selectedImages.clear();
             checkboxes.forEach(cb => cb.checked = false);
         } else {
-            this.filteredPhotos.forEach(photo => this.selectedPhotos.add(photo.id));
+            this.filteredImages.forEach(image => this.selectedImages.add(image.id));
             checkboxes.forEach(cb => cb.checked = true);
         }
         
-        this.updateDeleteButton();
+        this.updateActionButtons();
     }
 
-    deleteSelectedPhotos() {
-        if (this.selectedPhotos.size === 0) return;
+    deleteSelectedImages() {
+        if (this.selectedImages.size === 0) return;
         
-        const count = this.selectedPhotos.size;
-        if (!confirm(`Delete ${count} selected photo${count !== 1 ? 's' : ''}?`)) return;
+        const count = this.selectedImages.size;
+        if (!confirm(`Delete ${count} selected image(s)?`)) return;
         
-        this.currentAlbum.photos = this.currentAlbum.photos.filter(
-            photo => !this.selectedPhotos.has(photo.id)
+        this.images[this.currentYear] = this.images[this.currentYear].filter(
+            img => !this.selectedImages.has(img.id)
         );
         
-        this.filteredPhotos = this.filteredPhotos.filter(
-            photo => !this.selectedPhotos.has(photo.id)
-        );
-        
-        this.selectedPhotos.clear();
-        this.currentAlbum.updatedAt = new Date().toISOString();
+        this.selectedImages.clear();
         this.saveToStorage();
-        this.displayGallery();
-        this.showAlbumOverview();
-        this.updateStats();
-        this.updateDeleteButton();
-        this.showToast(`${count} photo${count !== 1 ? 's' : ''} deleted successfully!`, 'success');
+        this.loadImages(this.currentYear);
+        this.showToast(`${count} image(s) deleted successfully!`, 'success');
     }
 
-    updateDeleteButton() {
-        const btn = document.getElementById('deleteSelectedBtn');
-        btn.disabled = this.selectedPhotos.size === 0;
-        btn.innerHTML = `<i class="fas fa-trash"></i> Delete Selected (${this.selectedPhotos.size})`;
+    updateActionButtons() {
+        const deleteBtn = document.getElementById('deleteSelectedBtn');
+        const moveBtn = document.getElementById('moveSelectedBtn');
+        
+        const isDisabled = this.selectedImages.size === 0;
+        deleteBtn.disabled = isDisabled;
+        moveBtn.disabled = isDisabled;
+        
+        deleteBtn.innerHTML = `<i class="fas fa-trash"></i> Delete Selected (${this.selectedImages.size})`;
+        moveBtn.innerHTML = `<i class="fas fa-arrows-alt"></i> Move Selected (${this.selectedImages.size})`;
     }
 
     // View Mode
@@ -853,19 +1035,14 @@ class PhotoAlbumManager {
             '<i class="fas fa-list"></i>' : '<i class="fas fa-th-large"></i>';
         
         const gallery = document.getElementById('gallery');
-        if (this.viewMode === 'list') {
-            gallery.classList.add('list-view');
-        } else {
-            gallery.classList.remove('list-view');
-        }
-        
+        gallery.setAttribute('data-view-mode', this.viewMode);
         this.displayGallery();
     }
 
     // Pagination
     updatePagination() {
         const pagination = document.getElementById('pagination');
-        const totalPages = Math.ceil(this.filteredPhotos.length / this.photosPerPage);
+        const totalPages = Math.ceil(this.filteredImages.length / this.imagesPerPage);
         
         if (totalPages <= 1) {
             pagination.innerHTML = '';
@@ -876,7 +1053,7 @@ class PhotoAlbumManager {
         
         // Previous button
         if (this.currentPage > 1) {
-            paginationHTML += `<button class="pagination-btn" onclick="photoAlbumManager.goToPage(${this.currentPage - 1})">
+            paginationHTML += `<button class="pagination-btn" onclick="gallery.goToPage(${this.currentPage - 1})">
                 <i class="fas fa-chevron-left"></i>
             </button>`;
         }
@@ -888,7 +1065,7 @@ class PhotoAlbumManager {
                 i === totalPages || 
                 (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
                 paginationHTML += `<button class="pagination-btn ${i === this.currentPage ? 'active' : ''}" 
-                    onclick="photoAlbumManager.goToPage(${i})">${i}</button>`;
+                    onclick="gallery.goToPage(${i})">${i}</button>`;
             } else if (i === this.currentPage - 2 || i === this.currentPage + 2) {
                 paginationHTML += '<span class="pagination-ellipsis">...</span>';
             }
@@ -896,7 +1073,7 @@ class PhotoAlbumManager {
         
         // Next button
         if (this.currentPage < totalPages) {
-            paginationHTML += `<button class="pagination-btn" onclick="photoAlbumManager.goToPage(${this.currentPage + 1})">
+            paginationHTML += `<button class="pagination-btn" onclick="gallery.goToPage(${this.currentPage + 1})">
                 <i class="fas fa-chevron-right"></i>
             </button>`;
         }
@@ -910,24 +1087,68 @@ class PhotoAlbumManager {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Stats and Updates
-    updateStats() {
-        const totalAlbums = this.albums.size;
-        const totalPhotos = Array.from(this.albums.values()).reduce((total, album) => total + album.photos.length, 0);
-        const viewingPhotos = this.filteredPhotos.length;
+    // Countdown
+    showCountdown() {
+        const container = document.getElementById('countdownContainer');
+        container.style.display = 'block';
         
-        document.getElementById('totalAlbums').textContent = totalAlbums;
-        document.getElementById('totalPhotos').textContent = totalPhotos;
-        document.getElementById('viewingPhotos').textContent = viewingPhotos;
+        const countdownDate = new Date('January 1, 2026 00:00:00').getTime();
+        
+        this.countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            if (distance < 0) {
+                clearInterval(this.countdownInterval);
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = String(days).padStart(2, '0');
+            document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
+        }, 1000);
+    }
+
+    hideCountdown() {
+        document.getElementById('countdownContainer').style.display = 'none';
+        if (this.countdownInterval) {
+            clearInterval(this.countdownInterval);
+        }
     }
 
     // Utility Functions
+    updateStats() {
+        const totalImages = Object.values(this.images).reduce((total, yearImages) => total + yearImages.length, 0);
+        const totalAlbums = Object.keys(this.albums).length;
+        
+        document.getElementById('totalImages').textContent = totalImages;
+        document.getElementById('totalAlbums').textContent = totalAlbums;
+        document.getElementById('currentYear').textContent = this.currentYear;
+        document.getElementById('viewingImages').textContent = this.filteredImages.length;
+    }
+
+    updateGalleryTitle() {
+        const titleElement = document.getElementById('galleryTitle');
+        if (this.currentAlbum === 'all') {
+            titleElement.textContent = `Gallery ${this.currentYear}`;
+        } else {
+            const albumName = this.albums[this.currentAlbum]?.name || 'Unknown Album';
+            titleElement.textContent = `${albumName} - ${this.currentYear}`;
+        }
+    }
+
     formatDate(dateString) {
-        if (!dateString) return 'No date';
-        
         const date = new Date(dateString);
-        if (isNaN(date.getTime())) return 'Invalid date';
-        
         return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
@@ -935,231 +1156,60 @@ class PhotoAlbumManager {
         });
     }
 
+    formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
     showLoading(show) {
-        const spinner = document.getElementById('loadingSpinner');
-        spinner.style.display = show ? 'flex' : 'none';
+        document.getElementById('loadingSpinner').style.display = show ? 'block' : 'none';
     }
 
     showToast(message, type = 'success') {
         const container = document.getElementById('toastContainer');
         const toast = document.createElement('div');
         toast.className = `toast ${type}`;
-        
-        const iconClass = type === 'success' ? 'check' : 
-                         type === 'error' ? 'times' : 
-                         type === 'warning' ? 'exclamation-triangle' : 'info-circle';
-        
         toast.innerHTML = `
-            <i class="fas fa-${iconClass}"></i>
-            <span>${message}</span>
+            <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'times' : 'exclamation'}-circle"></i>
+            ${message}
         `;
         
         container.appendChild(toast);
         
-        // Auto remove after 4 seconds
         setTimeout(() => {
-            if (container.contains(toast)) {
-                toast.style.animation = 'slideOut 0.3s ease forwards';
-                setTimeout(() => {
-                    if (container.contains(toast)) {
-                        container.removeChild(toast);
-                    }
-                }, 300);
-            }
-        }, 4000);
-    }
-
-    // Data Export/Import (bonus feature)
-    exportAlbums() {
-        try {
-            const data = {
-                albums: Object.fromEntries(this.albums),
-                exportDate: new Date().toISOString(),
-                version: '1.0'
-            };
-            
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `photo-albums-backup-${new Date().toISOString().split('T')[0]}.json`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            
-            this.showToast('Albums exported successfully!', 'success');
-        } catch (error) {
-            console.error('Export failed:', error);
-            this.showToast('Export failed. Please try again.', 'error');
-        }
-    }
-
-    importAlbums(file) {
-        if (!file) return;
-        
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const data = JSON.parse(e.target.result);
-                if (data.albums) {
-                    // Merge with existing albums
-                    Object.entries(data.albums).forEach(([name, album]) => {
-                        if (!this.albums.has(name)) {
-                            this.albums.set(name, album);
-                        }
-                    });
-                    
-                    this.saveToStorage();
-                    this.updateAlbumSelect();
-                    this.updateStats();
-                    this.showToast('Albums imported successfully!', 'success');
-                } else {
-                    this.showToast('Invalid backup file format', 'error');
+            toast.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(() => {
+                if (container.contains(toast)) {
+                    container.removeChild(toast);
                 }
-            } catch (error) {
-                console.error('Import failed:', error);
-                this.showToast('Import failed. Invalid file format.', 'error');
-            }
-        };
-        reader.readAsText(file);
-    }
-
-    // Keyboard Shortcuts
-    initKeyboardShortcuts() {
-        document.addEventListener('keydown', (e) => {
-            // Only activate shortcuts when no modal is open and no input is focused
-            if (document.querySelector('.modal[style*="block"]') || 
-                document.activeElement.tagName === 'INPUT' || 
-                document.activeElement.tagName === 'TEXTAREA') {
-                return;
-            }
-            
-            switch(e.key.toLowerCase()) {
-                case 'n':
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        this.openCreateAlbumModal();
-                    }
-                    break;
-                case 'u':
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        this.openUploadModal();
-                    }
-                    break;
-                case 'a':
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        this.toggleSelectAll();
-                    }
-                    break;
-                case 'delete':
-                    if (this.selectedPhotos.size > 0) {
-                        this.deleteSelectedPhotos();
-                    }
-                    break;
-            }
-        });
-    }
-
-    // Search with debouncing
-    initDebouncedSearch() {
-        let searchTimeout;
-        const searchInput = document.getElementById('searchInput');
-        
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                this.searchPhotos(e.target.value);
-            }, 300); // 300ms debounce
-        });
-    }
-
-    // Initialize everything
-    initialize() {
-        this.initKeyboardShortcuts();
-        this.initDebouncedSearch();
-        
-        // Add helpful tooltips
-        this.addTooltips();
-        
-        // Check for saved state
-        const lastAlbum = localStorage.getItem('lastSelectedAlbum');
-        if (lastAlbum && this.albums.has(lastAlbum)) {
-            document.getElementById('albumSelect').value = lastAlbum;
-            this.selectAlbum(lastAlbum);
-        }
-    }
-
-    addTooltips() {
-        // Add title attributes for better UX
-        document.getElementById('createAlbumBtn').title = 'Create new album (Ctrl+N)';
-        document.getElementById('uploadBtn').title = 'Upload photos (Ctrl+U)';
-        document.getElementById('selectAllBtn').title = 'Select all photos (Ctrl+A)';
-        document.getElementById('deleteSelectedBtn').title = 'Delete selected photos (Delete)';
-        document.getElementById('viewModeBtn').title = 'Toggle view mode';
-        document.getElementById('searchInput').title = 'Search photos by title, description, tags, or location';
-    }
-
-    // Save last selected album
-    selectAlbum(albumName) {
-        const album = this.albums.get(albumName);
-        if (!album) return;
-
-        this.currentAlbum = album;
-        this.filteredPhotos = [...album.photos];
-        this.selectedPhotos.clear();
-        this.currentPage = 1;
-        
-        // Save last selected album
-        localStorage.setItem('lastSelectedAlbum', albumName);
-        
-        this.showAlbumOverview();
-        this.displayGallery();
-        this.updateStats();
-        this.updateDeleteButton();
+            }, 300);
+        }, 3000);
     }
 }
 
-// Initialize the photo album manager when the DOM is loaded
+// Initialize the gallery when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.photoAlbumManager = new PhotoAlbumManager();
-    photoAlbumManager.initialize();
+    window.gallery = new ImageGallery();
 });
 
-// Add some demo data for testing (remove in production)
-function addDemoData() {
-    if (photoAlbumManager.albums.size === 0) {
-        // Create a demo album
-        const demoAlbum = {
-            id: 'demo-' + Date.now(),
-            name: 'Demo Album',
-            description: 'A sample album to showcase the features',
-            category: 'personal',
-            cover: null,
-            photos: [
-                {
-                    id: 'demo-photo-1',
-                    src: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjNjY3ZWVhIi8+CjxjaXJjbGUgY3g9IjMwMCIgY3k9IjEwMCIgcj0iNDAiIGZpbGw9IiNmZmY5MDAiLz4KPHBhdGggZD0iTTUwIDI1MEwyMDAgMTUwTDM1MCAyNTBINTBaIiBmaWxsPSIjNDU4NTNkIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiPkRlbW8gUGhvdG88L3RleHQ+Cjwvc3ZnPg==',
-                    title: 'Beautiful Landscape',
-                    description: 'A stunning view of mountains and sunset. This is a demo photo to show how descriptions work in the photo album manager.',
-                    tags: ['landscape', 'sunset', 'demo'],
-                    date: '2024-01-15',
-                    location: 'Demo Location',
-                    uploadedAt: new Date().toISOString()
-                }
-            ],
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-        };
-        
-        photoAlbumManager.albums.set(demoAlbum.name, demoAlbum);
-        photoAlbumManager.saveToStorage();
-        photoAlbumManager.updateAlbumSelect();
-        photoAlbumManager.updateStats();
+// Add slideOut animation to CSS (should be added to styles.css)
+const additionalStyles = `
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
     }
 }
+`;
 
-// Uncomment the line below to add demo data on first load
-// setTimeout(() => addDemoData(), 1000);
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
