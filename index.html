@@ -1,130 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Media Gallery Dashboard</title>
+    <title>Advanced Photo Album Manager</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-
 <body>
     <header>
-        <h1><i class="fas fa-images"></i> Advanced Image Gallery</h1>
-        <p>Organize, upload and manage your memories</p>
+        <h1><i class="fas fa-photo-video"></i> Photo Album Manager</h1>
+        <p>Create albums, organize memories, and add descriptions</p>
     </header>
-
+    
     <nav class="main-nav">
         <div class="nav-controls">
-            <select id="yearSelect">
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
+            <button id="createAlbumBtn" class="create-album-btn">
+                <i class="fas fa-plus"></i>
+                Create Album
+            </button>
+            
+            <select id="albumSelect">
+                <option value="">Select an Album</option>
             </select>
-
+            
             <button id="uploadBtn" class="upload-btn">
                 <i class="fas fa-cloud-upload-alt"></i>
-                Upload Images
+                Add Photos
             </button>
-
+            
             <button id="viewModeBtn" class="view-mode-btn">
                 <i class="fas fa-th-large"></i>
             </button>
-
+            
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search images..." />
+                <input type="text" id="searchInput" placeholder="Search photos..." />
             </div>
         </div>
     </nav>
-
-    <!-- Upload Modal -->
+    
+    <!-- Create Album Modal -->
+    <div id="createAlbumModal" class="modal">
+        <div class="modal-content create-album-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-folder-plus"></i> Create New Album</h2>
+                <span class="close-modal" id="closeCreateAlbumModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="createAlbumForm">
+                    <div class="form-group">
+                        <label for="albumName">Album Name*</label>
+                        <input type="text" id="albumName" placeholder="e.g., Summer Vacation 2024" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="albumDescription">Description</label>
+                        <textarea id="albumDescription" placeholder="Describe this album..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="albumCategory">Category</label>
+                        <select id="albumCategory">
+                            <option value="personal">Personal</option>
+                            <option value="travel">Travel</option>
+                            <option value="family">Family</option>
+                            <option value="events">Events</option>
+                            <option value="work">Work</option>
+                            <option value="nature">Nature</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="albumCover">Cover Image (Optional)</label>
+                        <input type="file" id="albumCover" accept="image/*">
+                        <div id="coverPreview"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancelCreateAlbum" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Album</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Upload Photos Modal -->
     <div id="uploadModal" class="modal">
         <div class="modal-content upload-modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-upload"></i> Upload Images</h2>
+                <h2><i class="fas fa-upload"></i> Add Photos to Album</h2>
                 <span class="close-modal" id="closeUploadModal">&times;</span>
             </div>
             <div class="modal-body">
+                <div class="upload-album-info" id="uploadAlbumInfo">
+                    <p>Select an album first to add photos</p>
+                </div>
+                
                 <div class="upload-area" id="uploadArea">
                     <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                    <h3>Drag & Drop Images Here</h3>
+                    <h3>Drag & Drop Photos Here</h3>
                     <p>or click to browse files</p>
                     <input type="file" id="fileInput" multiple accept="image/*" hidden>
                 </div>
-
-                <div class="upload-options">
-                    <label for="uploadYear">Select Year:</label>
-                    <select id="uploadYear">
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                    </select>
-                </div>
-
+                
                 <div id="uploadPreview" class="upload-preview"></div>
-
+                
                 <div class="upload-actions">
                     <button id="clearUpload" class="btn btn-secondary">
                         <i class="fas fa-trash"></i> Clear All
                     </button>
                     <button id="confirmUpload" class="btn btn-primary">
-                        <i class="fas fa-check"></i> Upload Images
+                        <i class="fas fa-check"></i> Add Photos
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Countdown Container -->
-    <div id="countdownContainer" class="countdown-container">
-        <h2><i class="fas fa-clock"></i> 2026 Gallery Coming Soon!</h2>
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Days</div>
+    
+    <!-- Edit Photo Modal -->
+    <div id="editPhotoModal" class="modal">
+        <div class="modal-content edit-photo-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Edit Photo Details</h2>
+                <span class="close-modal" id="closeEditPhotoModal">&times;</span>
             </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
+            <div class="modal-body">
+                <div class="photo-edit-preview">
+                    <img id="editPhotoPreview" src="" alt="Preview">
+                </div>
+                
+                <form id="editPhotoForm">
+                    <div class="form-group">
+                        <label for="photoTitle">Photo Title*</label>
+                        <input type="text" id="photoTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoDescription">Description</label>
+                        <textarea id="photoDescription" rows="4" placeholder="Tell the story behind this photo..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoTags">Tags (comma-separated)</label>
+                        <input type="text" id="photoTags" placeholder="e.g., beach, sunset, family">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoDate">Date Taken</label>
+                        <input type="date" id="photoDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoLocation">Location</label>
+                        <input type="text" id="photoLocation" placeholder="e.g., Mombasa, Kenya">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancelEditPhoto" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
+    
+    <!-- Album Overview -->
+    <div class="album-overview" id="albumOverview" style="display: none;">
+        <div class="album-header">
+            <div class="album-cover-section">
+                <img id="currentAlbumCover" src="" alt="Album Cover" class="album-cover-image">
+                <div class="album-info">
+                    <h2 id="currentAlbumName">Album Name</h2>
+                    <p id="currentAlbumDescription">Album Description</p>
+                    <div class="album-meta">
+                        <span class="album-category" id="currentAlbumCategory">Category</span>
+                        <span class="album-count" id="currentAlbumCount">0 photos</span>
+                        <span class="album-date" id="currentAlbumDate">Created today</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="album-actions">
+                <button id="editAlbumBtn" class="btn btn-outline">
+                    <i class="fas fa-edit"></i> Edit Album
+                </button>
+                <button id="deleteAlbumBtn" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Delete Album
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Gallery Stats -->
     <div class="gallery-stats">
         <div class="stat-item">
-            <i class="fas fa-images"></i>
-            <span id="totalImages">0</span>
-            <label>Total Images</label>
+            <i class="fas fa-folder"></i>
+            <span id="totalAlbums">0</span>
+            <label>Albums</label>
         </div>
         <div class="stat-item">
-            <i class="fas fa-calendar"></i>
-            <span id="currentYear">2024</span>
-            <label>Current Year</label>
+            <i class="fas fa-images"></i>
+            <span id="totalPhotos">0</span>
+            <label>Total Photos</label>
         </div>
         <div class="stat-item">
             <i class="fas fa-eye"></i>
-            <span id="viewingImages">0</span>
+            <span id="viewingPhotos">0</span>
             <label>Viewing</label>
         </div>
     </div>
-
+    
     <main>
         <div class="gallery-container">
             <div class="gallery-header">
-                <h2 id="galleryTitle">Gallery 2024</h2>
+                <h2 id="galleryTitle">Select an Album</h2>
                 <div class="gallery-actions">
                     <button id="selectAllBtn" class="btn btn-outline">
                         <i class="fas fa-check-square"></i> Select All
@@ -134,37 +226,63 @@
                     </button>
                 </div>
             </div>
-
+            
             <div class="gallery" id="gallery">
-                <!-- Images will be loaded here -->
+                <div class="welcome-screen">
+                    <i class="fas fa-photo-video welcome-icon"></i>
+                    <h2>Welcome to Your Photo Albums</h2>
+                    <p>Create your first album to start organizing your memories</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('createAlbumBtn').click()">
+                        <i class="fas fa-plus"></i> Create Your First Album
+                    </button>
+                </div>
             </div>
-
-            <div class="gallery-pagination" id="pagination">
-                <!-- Pagination will be added here -->
-            </div>
+            
+            <div class="gallery-pagination" id="pagination"></div>
         </div>
     </main>
-
-    <!-- Image Modal/Lightbox -->
+    
+    <!-- Photo Modal/Lightbox -->
     <div class="image-modal" id="imageModal">
+        <div class="modal-navigation">
+            <button id="prevImage" class="nav-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="nextImage" class="nav-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <span class="close-modal" id="closeModal">&times;</span>
+        
         <div class="modal-content image-modal-content">
-            <div class="modal-navigation">
-                <button id="prevImage" class="nav-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button id="nextImage" class="nav-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <span class="close-modal" id="closeModal">&times;</span>
-
             <img id="modalImage" src="" alt="">
-            <div class="image-info">
-                <h3 id="imageName">Image Name</h3>
-                <p id="imageDetails">Details</p>
+            <div class="image-details-panel">
+                <div class="image-main-info">
+                    <h3 id="modalImageTitle">Photo Title</h3>
+                    <p id="modalImageDescription">Photo description goes here...</p>
+                </div>
+                
+                <div class="image-metadata">
+                    <div class="metadata-item">
+                        <i class="fas fa-calendar"></i>
+                        <span id="modalImageDate">Date</span>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modalImageLocation">Location</span>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="fas fa-tags"></i>
+                        <div id="modalImageTags" class="tags-container"></div>
+                    </div>
+                </div>
+                
                 <div class="image-actions">
-                    <button id="downloadImage" class="btn btn-primary">
+                    <button id="editPhotoBtn" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button id="downloadImage" class="btn btn-secondary">
                         <i class="fas fa-download"></i> Download
                     </button>
                     <button id="deleteImage" class="btn btn-danger">
@@ -174,17 +292,16 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Loading Spinner -->
     <div id="loadingSpinner" class="loading-spinner">
         <div class="spinner"></div>
-        <p>Loading images...</p>
+        <p>Loading...</p>
     </div>
-
+    
     <!-- Toast Notifications -->
     <div id="toastContainer" class="toast-container"></div>
-
+    
     <script src="scripts.js"></script>
 </body>
-
 </html>
